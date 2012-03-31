@@ -19,6 +19,8 @@ Socket
 Stats
 Unzip
 WriteStream
+__defineGetter__
+__defineSetter__
 __dirname
 __filename
 abort
@@ -363,3 +365,5 @@ writeUInt16LE
 writeUInt32BE
 writeUInt32LE
 writeUInt8
+
+regenerate
