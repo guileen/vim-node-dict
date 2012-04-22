@@ -158,14 +158,21 @@ inherits
 inspect
 installPrefix
 isArray
+isBlockDevice
 isBuffer
+isCharacterDevice
 isDate
+isDirectory
 isError
+isFIFO
+isFile
 isIP
 isIPv4
 isIPv6
 isMaster
 isRegExp
+isSocket
+isSymbolicLink
 isWorker
 isatty
 join
@@ -244,6 +251,7 @@ readlink
 readlinkSync
 realpath
 realpathSync
+regenerate
 relative
 release
 remoteAddress
@@ -365,5 +373,3 @@ writeUInt16LE
 writeUInt32BE
 writeUInt32LE
 writeUInt8
-
-regenerate
