@@ -72,6 +72,7 @@ cache
 change
 chdir
 checkContinue
+child_process
 chmod
 chmodSync
 chown
@@ -251,6 +252,7 @@ platform
 process
 prompt
 pump
+querystring
 question
 randomBytes
 read
