@@ -1,0 +1,31 @@
+#/bin/sh
+
+# makenodedict /path/to/node
+
+NODE_HOME=$1
+API_HOME=$NODE_HOME/doc/api/
+BASEDIR=$(dirname $0)
+OUT_FILE=$BASEDIR/out.txt
+DICT_FILE=$BASEDIR/dict/node.dict
+
+# modules
+cat ~/projects/node/doc/api/*.markdown | grep "require('[a-z]\+'" | sed "s/.*require('\([^']*\)').*/\1/" | sort -u > $OUT_FILE
+
+# class, method, events, properties
+cat $API_HOME/*.markdown \
+    | grep "## " \
+    | sed 's/.*\.\(.*\)(.*/=\1/' \
+    | sed "s/.*Event. *'\(.*\)'/=\1/" \
+    | sed 's/.*Class: .*\.\(.*\)/=\1/' \
+    | sed 's/.*Class: \(.*\)/=\1/' \
+    | sed 's/.*# *\([^ ]*\)(.*/=\1/' \
+    | sed 's/.*# *[^ ]*\.\([^ ]*\)$/=\1/' \
+    | sed 's/.*# \([_a-z]*\)$/=\1/' \
+    | sed '/#/d' \
+    | sed 's/=//' \
+    | sed 's/\\_/_/' \
+    | sort -u >> $OUT_FILE
+
+cat $OUT_FILE $BASEDIR/extras.txt | sort -u > $DICT_FILE
+
+rm $OUT_FILE
